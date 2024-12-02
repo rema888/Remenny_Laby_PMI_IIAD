@@ -1,9 +1,9 @@
-#pragma once 
+#pragma once // для предотвращения многократного включения одного и того же заголовочного файла
 
 const int N_Max = 100;
 const int M_Max = 100;
 
-namespace laba_7
+namespace laba_7 // пространство имён
 {
     bool isPrime(int x);
     bool same_strings(int matrix[N_Max][M_Max], int& n, int& m);

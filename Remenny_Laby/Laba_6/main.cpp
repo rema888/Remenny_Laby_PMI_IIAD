@@ -39,14 +39,13 @@ bool dif_digits(int n)
         n = abs(n); 
     }
 
-    // Внешний цикл, который проходит по всем цифрам числа
+    // Проходим по всем цифрам числа
     // В начале i равно n, а затем мы делим i на 10 в каждой итерации, чтобы избавиться от последней цифры
     for (int i = n; i > 0; i /= 10) 
     {
         int digit = i % 10; // Извлекаем последнюю цифру числа i (текущую цифру для проверки)
 
-        // Внутренний цикл, который проходит по всем цифрам числа, кроме текущей
-        // j равно i / 10, что исключает последнюю цифру (digit), чтобы сравнивать остальное
+        // Проходим по всем цифрам числа, кроме текущей
         for (int j = i / 10; j > 0; j /= 10) 
         {
             // Сравниваем текущую цифру с каждой из оставшихся цифр
@@ -60,33 +59,36 @@ bool dif_digits(int n)
     return true; 
 }
 
-bool mltpl_14(int n) 
+bool mltpl_14(int x)
 {
-    if (n < 0)
+    int mult = 1;
+    
+    if (x == 0)
     {
-        n = abs(n);  // -72 => -(7*2) = -14 кратно 14
+        return true; 
+    }
+    
+    else if (x < 0)
+    {
+        mult *= -1; // Вводим модуль и умножаем число на -1 если оно отрицательное, чтобы избежать ситуации ниже
+    }
+    
+    while (x != 0)
+    {
+        mult *= abs(x % 10);     // Если без модуля: 1) -3231 % 10 = -1
+                                 //                  2) -3231 % 10 = -3   ==> -1 * -3 * -2 * -3 == 18,    Все числа со знаком - 
+                                 //                  3) -3231 % 10 = -2  
+                                 //                  4) -3231 % 10 = -3    
+        x /= 10;
     }
 
-	bool is_2 = false;
-	bool is_7 = false;
+    if (mult % 2 == 0 && mult % 7 == 0)
+    {
+        return true;
+    }
+    return false;
+}    
 
-	if ((n / 10) == 0)
-		return false;
-	else {
-		while (n != 0) {
-			if ((n % 10) == 2) {
-				is_2 = true;
-			}
-			if ((n % 10) == 7) {
-				is_7 = true;
-			}
-			if (is_2 && is_7)
-				break;
-			n /= 10;
-		}
-	}
-	return (is_2 && is_7);
-}
 
 
 int main()
@@ -114,7 +116,7 @@ int main()
                 break;
             }
 
-    // Сортировка обменом (Swap sort) - если есть одинаковые числа
+    // Сортировка обменом (Swap sort) - если есть одинаковые числа (по убыванию)
     if (ravenstvo1)
     {
         for(int i=0;i<n1;i++)
@@ -146,6 +148,8 @@ int main()
     // Задание 2  - тест 5 ; 983 -345 345 -3225 5932
 
     int mas2[1000];
+    int masFirst[1000];
+    int masMult[1000];
     int n2;
     std::cout << "Задание 2" << std::endl;
     std::cout << "Введите длину массива: "; std::cin >> n2;
@@ -155,17 +159,27 @@ int main()
     for(int i=0;i<n2;i++)
     {
         std::cin >> mas2[i];
+        masFirst[i] = firstDigit(mas2[i]);
+        masMult[i] = multipleOfDigits(mas2[i]);
     }
 
-    // Сортировка по первой цифре числа
+     // Сортировка по первой цифре числа
 
     for(int i=0;i<n2;i++)
         for(int j=i+1;j<n2;j++)
-            if ((firstDigit(mas2[i])) > (firstDigit(mas2[j])))
+            if (masFirst[i] > masFirst[j])
             {
                 int tmp = mas2[i];
                 mas2[i] = mas2[j];
                 mas2[j] = tmp;
+
+                int tmp2 = masFirst[i];
+                masFirst[i] = masFirst[j];
+                masFirst[j] = tmp2;
+
+                int tmp3 = masMult[i];
+                masMult[i] = masMult[j];
+                masMult[j] = tmp3;
             }
 
     std::cout << "По возр. первой цифры: ";
@@ -178,13 +192,21 @@ int main()
 
     for(int i=0;i<n2;i++)
         for(int j=i+1;j<n2;j++)
-            if ((firstDigit(mas2[i])) == (firstDigit(mas2[j])))
+            if (masFirst[i] == masFirst[j])
             {
-                if ((multipleOfDigits(mas2[i])) > (multipleOfDigits(mas2[j])))
+                if (masMult[i] > masMult[j])
                 {
                     int tmp = mas2[i];
                     mas2[i] = mas2[j];
                     mas2[j] = tmp;
+
+                    int tmp2 = masFirst[i];
+                    masFirst[i] = masFirst[j];
+                    masFirst[j] = tmp2;
+
+                    int tmp3 = masMult[i];
+                    masMult[i] = masMult[j];
+                    masMult[j] = tmp3;
                 }
             }
 
@@ -198,13 +220,21 @@ int main()
 
     for(int i=0;i<n2;i++)
         for(int j=i+1;j<n2;j++)
-            if ((firstDigit(mas2[i])) == (firstDigit(mas2[j])) && ((multipleOfDigits(mas2[i])) == (multipleOfDigits(mas2[j]))))
+            if ((masFirst[i] == masFirst[j]) && (masMult[i] == masMult[j]))
             {
                 if (mas2[i] > mas2[j])
                 {
                     int tmp = mas2[i];
                     mas2[i] = mas2[j];
                     mas2[j] = tmp;
+
+                    int tmp2 = masFirst[i];
+                    masFirst[i] = masFirst[j];
+                    masFirst[j] = tmp2;
+
+                    int tmp3 = masMult[i];
+                    masMult[i] = masMult[j];
+                    masMult[j] = tmp3;
                 }         
             }
 
