@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    int matrix[N_Max][M_Max];
+     int matrix[N_Max][M_Max];
     int n, m;
     laba_7::Read(matrix,n,m);
     int biggest_simple = laba_7::biggest_simple(matrix,n,m);
