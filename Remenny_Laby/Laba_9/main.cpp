@@ -15,9 +15,6 @@ int main()
         std::cout << "Байт " << i+1 << ": " << static_cast<int>(c[i]) << std::endl; //static_cast преобразует значение байта (unsigned char) в  
                                                                                     // целое число, чтобы корректно отобразить его как число.
     }
-
-    std::cout << &x;
-    std::cout << reinterpret_cast<unsigned char*>(&x);
 }
 // 1000 - 000..... 001110100011
 // 1) 232 - 11101000
