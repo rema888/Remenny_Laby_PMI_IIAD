@@ -3,6 +3,7 @@
 const int N_Max = 100;
 const int M_Max = 100;
 
+
 namespace laba_7 // пространство имён
 {
     bool isPrime(int x);
