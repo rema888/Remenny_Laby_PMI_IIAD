@@ -13,5 +13,5 @@ int main()
     {
         laba_7::replace_minimal(matrix,n,m, biggest_simple);
     }
-    laba_7::Write(matrix,n,m);
+    laba_7::Write(matrix,n,m); 
 }
