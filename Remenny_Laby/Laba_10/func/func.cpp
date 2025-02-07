@@ -92,16 +92,4 @@ namespace mt
         }
         return true; // Число простое
     }
-
-    bool hasPrime(Node* head) 
-    {
-        Node* current = head->next; // Начинаем с первого реального узла
-        while (current != nullptr) 
-        {
-            if (isPrime(current->data))
-                return true;
-            current = current->next; // Переходим к следующему узлу
-        }      
-        return false; 
-    }
 }

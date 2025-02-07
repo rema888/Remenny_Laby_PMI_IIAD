@@ -18,5 +18,4 @@ namespace mt
 
     bool IsPalindrome(Node* head);
     bool isPrime(int value); 
-    bool hasPrime(Node* head);
 }

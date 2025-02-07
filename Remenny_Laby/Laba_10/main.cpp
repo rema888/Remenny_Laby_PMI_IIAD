@@ -20,33 +20,15 @@ int main()
     
     if (mt::IsPalindrome(head)) 
     {
-        mt::Node* current = head->next; // Возвращаемся к первому реальному узлу
-        while (current != nullptr) 
-        {
-            // Проверяем, если последняя цифра равна 0
-            if (current->data % 10 == 0) 
-            {
-                // Создаем новый узел и вставляем его после текущего узла
-                mt::Node* newNode = new mt::Node{current->data, current->next}; 
-                current->next = newNode; // Вставляем новый узел
-                current = newNode; // Переходим к следующему узлу, который был вставлен
-            } 
-            else
-            {
-                // Переходим к следующему узлу
-                current = current->next; 
-            }
-        }
+        // Переходим к началу списка, пропуская фиктивный узел
+        mt::Node* current = head->next; 
+        mt::Node* prev = head; // Указатель на предыдущий узел для удаления
 
-        current = head->next; // Начинаем с первого реального узла
-        mt::Node* prev = head; // Указатель на предыдущий узел
-
+        // Удаляем простые числа
         while (current != nullptr)
         {
-            // Проверяем, является ли текущее значение простым
-            if (mt::hasPrime(head)) 
+            if (mt::isPrime(current->data)) // Проверяем, является ли текущее значение простым
             {
-                // Удаляем узел через указатель "prev"
                 prev->next = current->next; // Соединяем предыдущий узел с следующим узлом   
                 mt::Node* toDelete = current; // Узел, который мы удалим
                 current = current->next; // Переход к следующему узлу после удаления
@@ -58,12 +40,31 @@ int main()
                 current = current->next; // Переход к следующему узлу
             }
         }
+
+        // Вернемся к новому началу списка для дублирования
+        current = head->next;
+
+        // Дублируем числа, оканчивающиеся на 0
+        while (current != nullptr) 
+        {
+            if (current->data % 10 == 0) // Проверяем, если последняя цифра равна 0
+            {
+                mt::Node* newNode = new mt::Node{current->data, current->next}; 
+                current->next = newNode; // Вставляем новый узел
+                current = newNode->next; // Переходим к следующему узлу, который был вставлен
+            } 
+            else
+            {
+                current = current->next; // Переход к следующему узлу
+            }
+        }
     }
 
+        
     
     else
     {
-        std::cout << "Чилл";
+        //mt::Sort(head);
     }
 
 
