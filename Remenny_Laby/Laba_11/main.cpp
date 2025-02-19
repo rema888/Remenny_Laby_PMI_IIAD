@@ -17,19 +17,27 @@ int main()
         AddBack(sent, x); // Добавляем число в двусвязный список
     }
 
+    bool hasThreeDigitNumber = false;
+
     for (Node* p = sent->next; p != sent; p = p->next) 
     {
-        if (dif_digits_three(p->data)) // 9897 55 44 685 3 - неправильно работает
+        if (dif_digits_three(p->data)) 
         {
-            RemoveEven(sent);
-            DuplicateOdd(sent);
-        } 
-        else
-        {
-            Sort(sent);
+            hasThreeDigitNumber = true;
+            break;
         }
     }
-    
+
+    if (hasThreeDigitNumber) 
+    {
+        RemoveEven(sent);
+        DuplicateOdd(sent);
+    } 
+    else 
+    {
+        Sort(sent);
+    }
+
     Print(sent);
     Clear(sent);
 }
