@@ -4,8 +4,8 @@
 int main()
 {
     Node* sent = new Node; // фиктивный элемент sent  
-    sent->next = sent; // стрелка вперед направленная в sent 
-    sent->prev = sent; // стрелка назад направленная в sent 
+    sent->next = sent; // стрелка вправо направленная в sent 
+    sent->prev = sent; // стрелка влево направленная в sent 
 
     int x, n;
     std::cout << "Введите длину списка: "; std::cin >> n;
@@ -17,18 +17,18 @@ int main()
         AddBack(sent, x); // Добавляем число в двусвязный список
     }
 
-    bool hasThreeDigitNumber = false;
+    bool Three_Digit = false;
 
     for (Node* p = sent->next; p != sent; p = p->next) 
     {
         if (dif_digits_three(p->data)) 
         {
-            hasThreeDigitNumber = true;
+            Three_Digit = true;
             break;
         }
     }
 
-    if (hasThreeDigitNumber) 
+    if (Three_Digit) 
     {
         RemoveEven(sent);
         DuplicateOdd(sent);
