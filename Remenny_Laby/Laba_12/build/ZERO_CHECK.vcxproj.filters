@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Git\Remenny_Laby_PMI_IIAD\Remenny_Laby\Laba_12\build\CMakeFiles\dd1d1c72f600e268716e7551aa15e0bf\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{C874C2A9-BD02-38E8-8304-85B59F6B45BE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
