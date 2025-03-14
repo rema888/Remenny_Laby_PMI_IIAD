@@ -3,9 +3,9 @@
 
 int main()
 {
-    Node* sent = new Node; // фиктивный элемент sent  
-    sent->next = sent; // стрелка вправо направленная в sent 
-    sent->prev = sent; // стрелка влево направленная в sent 
+    Node* sent = new Node;  
+    sent->next = sent; 
+    sent->prev = sent; 
 
     int x, n;
     std::cout << "Введите длину списка: "; std::cin >> n;
