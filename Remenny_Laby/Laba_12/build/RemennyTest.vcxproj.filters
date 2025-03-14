@@ -4,6 +4,9 @@
     <ClCompile Include="C:\Git\Remenny_Laby_PMI_IIAD\Remenny_Laby\Laba_12\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Git\Remenny_Laby_PMI_IIAD\Remenny_Laby\Laba_12\func\func.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Git\Remenny_Laby_PMI_IIAD\Remenny_Laby\Laba_12\CMakeLists.txt" />

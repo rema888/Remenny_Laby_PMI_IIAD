@@ -1,32 +1,6 @@
 #include <iostream>
 #include <fstream>
-
-unsigned long long factorial(int n)
-{
-    if (n <= 1)
-        return 1;    
-    return n * factorial(n - 1);
-}
-
-void Search(int i, int j, int step, int n, int m, char field[100][100], int table[100][100]) 
-{
-    if(step >= table[i][j])
-        return;
-
-    table[i][j] = step;
-
-    if(field[i][j] == 'E')
-        return;
-
-    if(i + 1 < n && field[i+1][j] != '#')
-        Search(i+1,j,step+1,n,m,field,table);
-    if(i - 1 >= 0 && field[i-1][j] != '#')
-        Search(i-1,j,step+1,n,m,field,table);
-    if(j + 1 < m && field[i][j + 1] != '#')
-        Search(i,j+1,step+1,n,m,field,table);
-    if(j - 1 >= 0 && field[i][j - 1] != '#')
-        Search(i,j-1,step+1,n,m,field,table);
-}
+#include <func.hpp>
 
 int main()
 {
@@ -34,12 +8,31 @@ int main()
     int N;
     std::cout << "Введите число N (от 1 до 19 включительно): ";
     std::cin >> N;
-    if (N < 1 || N > 19)
+    if (N <= 0)
     {
-        std::cout << "Ошибка: N должно быть в диапазоне от 1 до 19." << std::endl;
+        std::cout << "N должно быть натуральным." << std::endl;
     }
-    std::cout << "Факториал числа " << N << " равен " << factorial(N) << std::endl;
+    std::cout << "Сумма цифр числа " << N << " равна " << sum_of_digits(N) << std::endl;
 
+    // Задание 2
+    const int X = 10;
+    int arr[X];
+
+    std::cout << "Исходный массив: " << std::endl;
+    for (int i=0;i<X;i++)
+    {
+        arr[i] = rand() % 100;
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+    
+    QuickSort(arr, 0, X-1);
+    std::cout << "Отсортированный массив: " << std::endl;
+    for (int i=0;i<X;i++)
+    {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
 
     // Задание 3
     std::ifstream in("input.txt");
