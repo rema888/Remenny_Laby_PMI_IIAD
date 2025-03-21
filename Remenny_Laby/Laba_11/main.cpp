@@ -14,7 +14,7 @@ int main()
     for (int i = 0; i < n; i++)
     {
         std::cin >> x;
-        AddBack(sent, x); // Добавляем число в двусвязный список
+        AddBack(sent, x);
     }
 
     bool Three_Digit = false;
