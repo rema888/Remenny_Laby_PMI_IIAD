@@ -32,6 +32,7 @@ bool dif_digits_three(int n)
     }     
 }
 
+
 bool all_digits_odd(int n) // нечетные
 {
     n = abs(n);
@@ -41,7 +42,7 @@ bool all_digits_odd(int n) // нечетные
         int digit = n % 10; // Извлекаем последнюю цифру
         if (digit % 2 == 0) 
             return false;
-        n /= 10; // Убираем последнюю цифру
+        n /= 10; // Убираем последнюю цифру 
     }
     return true;
 }

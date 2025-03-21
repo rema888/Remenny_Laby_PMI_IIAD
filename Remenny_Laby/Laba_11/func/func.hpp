@@ -4,8 +4,9 @@ struct Node
 {
     int data;
     Node* prev;
-    Node* next;
+    Node* next; 
 };
+
 
 bool dif_digits_three(int n);
 bool all_digits_odd(int n);

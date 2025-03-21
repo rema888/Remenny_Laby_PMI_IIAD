@@ -3,7 +3,7 @@
 
 int main()
 {
-    Node* sent = new Node;  
+    Node* sent = new Node;   
     sent->next = sent; 
     sent->prev = sent; 
 
@@ -38,6 +38,7 @@ int main()
         Sort(sent);
     }
 
+    
     Print(sent);
     Clear(sent);
 }
