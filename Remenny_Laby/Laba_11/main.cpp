@@ -26,7 +26,7 @@ int main()
             Three_Digit = true;
             break;
         }
-    }
+    } 
 
     if (Three_Digit) 
     {
