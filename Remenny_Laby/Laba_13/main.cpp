@@ -2,7 +2,7 @@
 #include <cmath>
 #include <string>
 #include <stdexcept>
-
+ 
 class Rectangle
 {
     private:  
