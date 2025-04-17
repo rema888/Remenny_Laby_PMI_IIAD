@@ -1,0 +1,10 @@
+^C:\GIT\REMENNY_LABY_PMI_IIAD\REMENNY_LABY\LABA_14\BUILD\CMAKEFILES\68850F62C72C5FE4C91D0D757C3A0117\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_14 -BC:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_14/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_14/build/RemennyTest.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

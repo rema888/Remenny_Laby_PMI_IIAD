@@ -4,7 +4,7 @@
 int main()
 {
     Node* sent = new Node;   
-    sent->next = sent; 
+    sent->next = sent; // (*sent).next = sent;
     sent->prev = sent; 
 
     int x, n;

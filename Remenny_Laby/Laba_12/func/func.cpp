@@ -13,7 +13,7 @@ int sum_of_digits(int N)
 
 void QuickSort(int arr[], int left, int right) 
 {
-    if(left > right)  // значит все отсортировано
+    if(left > right)  // условие выхода из рекурсии, когда подмассив пуст или подмассив содержит 1 элемент
         return;
 
     int p = arr[(left + right) / 2]; // Выбор опорного элемента
@@ -42,31 +42,51 @@ void QuickSort(int arr[], int left, int right)
 
 void Search(int i, int j, int step, int n, int m, char field[100][100], int table[100][100]) 
 {
+    // Если текущее количество шагов не меньше уже записанного в таблице для этой клетки,
+    // прерываем рекурсию (этот путь не оптимален)
     if(step >= table[i][j])
         return;
 
+    // Обновляем таблицу минимальных расстояний для текущей клетки
     table[i][j] = step;
 
+    // Если достигли E, прекращаем поиск в этом направлении
     if(field[i][j] == 'E')
         return;
 
-    // Прямые ходы
+    // Прямые ходы:
+
+    // Движение вниз (если не выходим за границы и клетка не заблокирована '#')
     if(i + 1 < n && field[i+1][j] != '#')
         Search(i+1,j,step+1,n,m,field,table);
+        
+    // Движение вверх
     if(i - 1 >= 0 && field[i-1][j] != '#')
         Search(i-1,j,step+1,n,m,field,table);
+        
+    // Движение вправо
     if(j + 1 < m && field[i][j + 1] != '#')
         Search(i,j+1,step+1,n,m,field,table);
+        
+    // Движение влево
     if(j - 1 >= 0 && field[i][j - 1] != '#')
         Search(i,j-1,step+1,n,m,field,table);
 
-    // Диагональные ходы
+    // Диагональные ходы:
+
+    // Вниз-вправо
     if (i + 1 < n && j + 1 < m && field[i + 1][j + 1] != '#')
-    Search(i + 1, j + 1, step + 1, n, m, field, table);
+        Search(i + 1, j + 1, step + 1, n, m, field, table);
+        
+    // Вниз-влево
     if (i + 1 < n && j - 1 >= 0 && field[i + 1][j - 1] != '#')
         Search(i + 1, j - 1, step + 1, n, m, field, table);
+        
+    // Вверх-вправо
     if (i - 1 >= 0 && j + 1 < m && field[i - 1][j + 1] != '#')
         Search(i - 1, j + 1, step + 1, n, m, field, table);
+        
+    // Вверх-влево
     if (i - 1 >= 0 && j - 1 >= 0 && field[i - 1][j - 1] != '#')
         Search(i - 1, j - 1, step + 1, n, m, field, table);
 }

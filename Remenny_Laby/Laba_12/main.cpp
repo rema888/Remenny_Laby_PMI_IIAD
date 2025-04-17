@@ -36,9 +36,9 @@ int main()
 
     // Задание 3
     std::ifstream in("input.txt");
-    char field[100][100];
-    int table[100][100];
-    int n, m;
+    char field[100][100]; // игровое поле
+    int table[100][100]; // таблица с минимальным количеством шагов до каждой клетки
+    int n, m; // размеры поля
     int is, js; // координаты старта
     int ie, je; // координаты конца
     in >> n >> m;
@@ -59,9 +59,19 @@ int main()
             }
         }
 
-    Search(is, js, 0, n, m, field, table); // 0 - количество шагов    
-    std:: cout << table[ie][je] << std::endl;
+    Search(is, js, 0, n, m, field, table); // 0 - количество шагов когда находимся в вершине   
 
+    if(table[ie][je] == INT_MAX)
+    {
+        std::cout << -1 << std::endl; // путь не найден
+    }
+
+    else
+    {
+        std::cout << table[ie][je] << std::endl;
+    }
+
+    std::cout << "Исходное поле:" << std::endl;
     for(int i=0;i<n;i++)
     {
         for(int j=0;j<m;j++)

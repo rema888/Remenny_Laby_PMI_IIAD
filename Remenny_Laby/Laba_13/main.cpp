@@ -17,7 +17,7 @@ class Rectangle
         Rectangle(double width, double height): r_width(width), r_height(height) 
         {
             if (width <= 0 || height <= 0)
-                throw std::invalid_argument("Ошибка: высота и ширина прямоугольника должны быть положительны");
+                std::cout << ("Ошибка: высота и ширина прямоугольника должны быть положительны");
         }
 
         // Методы
@@ -60,7 +60,7 @@ int main()
     try
     {
         Rectangle rect3(1, -2); // Попытка создать невалидный прямоугольник
-        rect3.info_about_rectangle();
+        rect3.info_about_rectangle(); // не выполнится если было исключение
     }
     catch(const std::exception& e)
     {
