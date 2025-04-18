@@ -1,0 +1,3 @@
+C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_16/build/CMakeFiles/RemennyTest.dir
+C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_16/build/CMakeFiles/ALL_BUILD.dir
+C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_16/build/CMakeFiles/ZERO_CHECK.dir
