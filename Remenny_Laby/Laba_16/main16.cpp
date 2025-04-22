@@ -11,6 +11,7 @@ class Matrix
         T data[N][M]; // Двумерный массив (матрица)
    
     public:
+
         Matrix() // Базовый конструктор (заполняет нулями)
         {
             for (size_t i = 0; i < N; i++)
@@ -22,6 +23,34 @@ class Matrix
             }
         }
        
+        /* Конструктор копирования
+        Matrix(const Matrix& other) 
+        {
+            for (size_t i = 0; i < N; ++i) 
+            {
+                for (size_t j = 0; j < M; ++j) 
+                {
+                    data[i][j] = other.data[i][j];
+                }
+            }
+        }*/
+
+        /* Оператор присваивания
+        Matrix& operator=(const Matrix& other) 
+        {
+            if (this != &other) 
+            {
+                for (size_t i = 0; i < N; ++i) 
+                {
+                    for (size_t j = 0; j < M; ++j) 
+                    {
+                        data[i][j] = other.data[i][j];
+                    }
+                }
+            }
+            return *this;
+        }*/
+
         Matrix(std::initializer_list<std::initializer_list<T>> init)
         {
             size_t i = 0; // Индекс строки
@@ -53,54 +82,91 @@ class Matrix
                 throw std::out_of_range("Введенные индексы должны быть меньше или равны 2");
             return data[row][col];
         }
-        // Оператор сложения матриц
-        Matrix operator+(const Matrix& other) const
+
+        // Преобразование матрицы в double
+        Matrix<double, N, M> toDouble() const
         {
-            Matrix result;
+            Matrix<double, N, M> result;
             for (size_t i = 0; i < N; ++i)
             {
                 for (size_t j = 0; j < M; ++j)
                 {
-                    result.data[i][j] = data[i][j] + other.data[i][j];
+                    result(i, j) = static_cast<double>(data[i][j]);
                 }
             }
             return result;
         }
-       
-        // Оператор +=
-        Matrix& operator+=(const Matrix& other) {
-            for (size_t i = 0; i < N; ++i) {
-                for (size_t j = 0; j < M; ++j) {
-                    data[i][j] += other.data[i][j];
-                }
-            }
-            return *this;
+
+        // Оператор сложения с преобразованием в double
+        template <typename U>
+        Matrix<double, N, M> operator+(const Matrix<U, N, M>& other) const
+        {
+            auto thisDouble = this->toDouble();
+            auto otherDouble = other.toDouble();
+            
+            Matrix<double, N, M> result;
+            
+            for (size_t i = 0; i < N; ++i)
+                for (size_t j = 0; j < M; ++j)
+                    result(i,j) = thisDouble(i,j) + otherDouble(i,j);
+            
+            return result;
         }
+
+        
        
-        // Оператор умножения матриц
+        // Нельзя изменить тип существующего объекта!!!!!
+        // Вар 1 - Оператор += с преобразованием в double (создает новую матрицу)
+        template <typename U>
+        Matrix<double, N, M> operator+=(const Matrix<U, N, M>& other) 
+        {
+            Matrix<double, N, M> result = this->toDouble();
+            auto otherDouble = other.toDouble();
+            
+            for (size_t i = 0; i < N; ++i) 
+                for (size_t j = 0; j < M; ++j) 
+                    result(i,j) += otherDouble(i,j);
+            
+            return result; // Но это уже не будет традиционным +=
+        }
+        
+        // Вар 2 - Оператор += для  матриц одного типа
+        Matrix<T, N, M>& operator+=(const Matrix<T, N, M>& other) 
+        {
+            for (size_t i = 0; i < N; ++i)
+                for (size_t j = 0; j < M; ++j)
+                    this->data[i][j] += other.data[i][j];
+                
+            return *this; // Возвращаем ссылку на текущую матрицу
+        }
+
         template <size_t K>
         Matrix<T, N, K> operator*(const Matrix<T, M, K>& other) const
         {
             Matrix<T, N, K> result;
+            
+            auto thisDouble = this->toDouble();
+            auto otherDouble = other.toDouble();
+
             for (size_t i = 0; i < N; ++i)
             {
                 for (size_t j = 0; j < K; ++j)
                 {
-                    result(i, j) = 0;
+                    result(i,j) = 0;
                     for (size_t k = 0; k < M; ++k)
                     {
-                        // Здесь используется константный operator() для other
-                        result(i, j) += data[i][k] * other(k, j);
+                        result(i,j) += thisDouble(i,k) * otherDouble(k,j);
                     }
                 }
             }
+            
             return result;
         }
-       
-        // Оператор *=
+
+        // Оператор *= с преобразованием в double
         Matrix& operator*=(const Matrix& other)
         {
-            *this = *this * other;
+            *this = *this * other.toDouble(); // Преобразуем другую матрицу в double перед умножением
             return *this;
         }
        
@@ -174,35 +240,50 @@ int main()
     Matrix<int, 3, 3> m4;
     m4 = m3;
     std::cout << m4 << std::endl;
-    // Оператор доступа к элементу по индексу
-    m3(0,0) = 100;
-    std::cout << m3 << std::endl;
-   
-    Matrix<int, 2, 2> m5= {
-        {1, 2},
-        {3, 4}
-    };
-    Matrix<int, 2, 2> m6 = {
+
+    Matrix<int, 2, 2> m5 = {
         {10, 20},
         {30, 40}
     };
+    Matrix<float, 2, 2> m6= {
+        {1.2, 2.5},
+        {3.1, 4.7}
+    };
+    Matrix<int, 2, 2> m7 = {
+        {15, 25},
+        {35, 45}
+    };
+
     // Оператор сложения
-    Matrix<int, 2, 2> m7 = m5 + m6;
-    std::cout << "m4 + m5 =\n" << m7;
+    Matrix m8 = m5 + m6;
+    std::cout << "1) m5 + m6\n" << m8;
+
     // Оператор умножения
-    Matrix<int, 2, 2> m8 = m5 * m6;
-    std::cout << "m5 * m6 =\n" << m8;
-    // Оператор +=
-    std::cout << "m5 += m5 =\n" << (m5+=m5);
+    //Matrix<int, 2, 2> m8 = m5 * m6;
+    //std::cout << "m5 * m6 =\n" << m8;
+
+    // Оператор += для матриц разного типа
+    std::cout << "3.1) m5 += m6\n" << (m5+=m6);
+
+    // Оператор += для матриц одного типа
+    std::cout << "3.2) m5 += m7\n" << (m5+=m7);
+
     // Оператор *=
-    std::cout << "m5 *= m5 =\n" << (m5*=m5);
+    //std::cout << "4) m5 *= m5 =\n" << (m5*=m6);
+
     // Оператор ++
-    std::cout << "++m5 =\n" << ++m5;
+    std::cout << "5) ++m1\n" << ++m1;
+
+    // Оператор доступа к элементу по индексу
+    m3(0,0) = 100;
+    std::cout << "6) m3(0,0) = 100\n" << m3;
+
     // Метод вычисления определителя
-    std::cout << "det m3 =\n" << m3.det() << std::endl;
-    // Оператор ввода и вывода
+    std::cout << "7) det m3\n" << m3.det() << std::endl;
+    
+    /* Оператор ввода и вывода
     Matrix<int, 2, 2> m9;
     std::cout << "Введите элементы матрицы (через пробел или Enter):\n";
     std::cin >> m9;
-    std::cout << m9;
+    std::cout << m9;*/
 }

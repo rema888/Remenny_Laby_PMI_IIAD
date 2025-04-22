@@ -42,7 +42,7 @@ class BigInt
                         m_size++;
                 }
             }
-            return *this; // ссылка на изменённый текущий объект
+            return *this; // ссылка на изменённый текущий объект класса
         }
 
 
@@ -109,7 +109,7 @@ class BigInt
             return false; // Если все совпало
         }
 
-        bool operator>(const BigInt& other) const
+        bool operator>(const BigInt& other)
         {
             if(m_size != other.m_size)
                 return m_size > other.m_size;
@@ -122,7 +122,7 @@ class BigInt
             return false;
         }
 
-        bool operator==(const BigInt& other) const
+        bool operator==(const BigInt& other)
         {
             if(m_size != other.m_size) // Сравниваем размер
                 return false;
@@ -135,7 +135,7 @@ class BigInt
             return true;
         }
 
-        bool operator!=(const BigInt& other) const
+        bool operator!=(const BigInt& other)
         {
             return !(*this == other); // Возвращает true если числа не равны, false - если равны 
                                       // 123 != 456 → !(false) = true
@@ -146,9 +146,17 @@ class BigInt
 };
 
 std::istream& operator>>(std::istream& in, BigInt& other) // Оператор ввода, std::istream& in — ссылка на поток ввода (std::cin)
+                                                          // BigInt& other — ссылка на объект BigInt, в который будет записано введённое число
 {
     std::string s;
     in >> s; // читаем строку из потока 
+    for (char c: s)
+    {
+        if(c < '0' || c > '9')
+        {
+            throw std::invalid_argument("Ошибка: в строке должны быть только цифры!");
+        }
+    }
     other = BigInt(s); // записываем результат в переданный обьект 
     return in; // возвращаем ссылку на поток ввода, чтобы можно было делать цепочку операций ввода 
 }
@@ -167,7 +175,6 @@ std::ostream& operator<<(std::ostream& out, const BigInt& other) // Операт
 
 int main()
 {
-
     BigInt x("1123333");
     BigInt y("999277777");
     std::cout << "x + y = " << x + y << std::endl;
@@ -182,6 +189,7 @@ int main()
     BigInt n("134322");
     BigInt k("134322111111");
     BigInt v("134322");
+    
     if (m > n)
         std::cout << "m > n" << std::endl;
     if (n < k)
@@ -191,9 +199,16 @@ int main()
     if (m != v)    
         std::cout << "m != v" << std::endl;
 
-    BigInt q, p;
-    std::cin >> q >> p;
-    std::cout << "q = " << q << " p = "<< p << std::endl;
+    try
+    {
+        BigInt q, p;
+        std::cin >> q >> p;
+        std::cout << "q = " << q << " p = "<< p << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
     BigInt w;
     std::cout << "w = " << w << std::endl;
