@@ -42,7 +42,7 @@ class BigInt
                         m_size++;
                 }
             }
-            return *this; // ссылка на изменённый текущий объект класса
+            return *this; // изменённый текущий объект класса
         }
 
 
@@ -160,7 +160,6 @@ std::istream& operator>>(std::istream& in, BigInt& other) // Оператор в
     other = BigInt(s); // записываем результат в переданный обьект 
     return in; // возвращаем ссылку на поток ввода, чтобы можно было делать цепочку операций ввода 
 }
-
 
 std::ostream& operator<<(std::ostream& out, const BigInt& other) // Оператор вывода, std::ostream& out — ссылка на поток вывода (std::cout)
 {

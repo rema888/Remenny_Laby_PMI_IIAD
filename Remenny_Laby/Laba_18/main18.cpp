@@ -12,9 +12,9 @@ int main()
     sf::CircleShape triangle(80.f, 3); // представляем треугольник как круг с 3 вершинами, 1й аргумент - радиус описанной окружности
                                                                                         // 2й аргумент - количество вершин
     // setPosition позволяет сместить фигуру относительно системы коррдинат по x и y                                                                                    
-//  rectangle.setPosition(150,150);
-//  rectangle.setRotation(45); // поворот на 45 градусов
-//  rectangle.setOrigin(rectangle.getSize().x / 2, rectangle.getSize().y / 2); // Функция setOrigin позволяет сместить начало с/к
+    rectangle.setPosition(150,150);
+    rectangle.setRotation(45); // поворот на 45 градусов
+    rectangle.setOrigin(rectangle.getSize().x / 2, rectangle.getSize().y / 2); // Функция setOrigin позволяет сместить начало с/к
 
     // Цвет фигуры
     circle.setFillColor(sf::Color::Magenta); // setFillColor - метод
@@ -40,26 +40,25 @@ int main()
             rectangle.setRotation(45); // задаем поворот абсолютно (1 раз только поворот)
         }*/
 
-        /*
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) // Если произошло нажатие на кнопку
+       
+        /*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) // Если произошло нажатие на кнопку
         {
             rectangle.rotate(1); // у rectangle есть поле angle, и когда мы пишем rotate, то к angle добавляем аргумент 45гр.
         }*/
            
-
-        /*
+        
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) // Если произошло нажатие на кнопку
         {
             if(!isLeftKeyPressed) // Если кнопка ранее не была нажата
             {
-                rectangle.rotate(1); // у rectangle есть поле angle, и когда мы пишем rotate, то к angle добавляем аргумент 45гр.
-                isLeftKeyPressed = true; // говорим, что кнопка в данный момент нажата
+                rectangle.rotate(10); // у rectangle есть поле angle, и когда мы пишем rotate, то к angle добавляем аргумент 45гр.
+                isLeftKeyPressed = true; // говорим, что кнопка в данный момент нажата (пока держим клавишу)
             }       
         }
         else
         {
-            isLeftKeyPressed = false;
-        }*/
+            isLeftKeyPressed = false; // когда отпустили клавишу
+        }
         
         // Функция clear очищает окно (все в окне становится по умолчанию черным цветом(r,g,b,a = 0))
         window.clear(sf::Color(255,0,0));
