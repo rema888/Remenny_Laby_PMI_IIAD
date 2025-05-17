@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdexcept>
+#include <stdexcept> 
 #include <initializer_list>
 template <typename T, size_t N, size_t M> // объявление шаблона класса с тремя параметрами: typename T - параметр типа (int, float, double и т.д.)
                                           //                                                size_t N, M - параметры-константы для количества строк и столбцов
