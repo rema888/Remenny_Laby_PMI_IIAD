@@ -7,7 +7,7 @@ project("${PROJECT_NAME}")           # Установить имя проект�
 
 
 set(CMAKE_CXX_STANDARD 17)           # Устанавливаем 17 стандарт языка
-set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_EXTENSIONS OFF)  
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # Сказать программе, что должен быть исполняемый файл
