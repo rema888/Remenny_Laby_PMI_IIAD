@@ -1,15 +1,9 @@
 #include <SFML/Graphics.hpp>
-#include <vector>
-#include <algorithm> 
-#include <ctime> // для работы со временем
-#include <chrono>
-#include <string>  //  для работы со строками
-#include <sstream> 
-#include <random> // для генерации случайных чисел
+#include <random>
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 700), "Memory Challenge", sf::Style::Titlebar | sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(800, 700), "Memory Challenge", sf::Style::Titlebar | sf::Style::Close); /////////////////////////////////////////////////////////////
     // Черный полупрозрачный прямоугольник длдя затемнения фона по окончании игры
     sf::RectangleShape overlay(sf::Vector2f(800, 700)); 
     overlay.setFillColor(sf::Color(0, 0, 0, 180));
@@ -80,7 +74,7 @@ int main()
         pairs.push_back(cardColors[i]);
     }
     
-    // Перемешиваем карточки
+    // Перемешиваем карточки //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     std::random_device rd; // Генератор случайных чисел
     std::shuffle(pairs.begin(), pairs.end(), rd); // rd нужен, чтобы обеспечить равномерное распределение (каждый элемент может попасть на любую позицию).
 
@@ -110,8 +104,9 @@ int main()
     bool waitingForFlipBack = false; // Задержка перед скрытием карточек (true, если игрок открыл две карточки, но они не совпали)
     float flipBackTime = 0.f; // Таймер для задержки перед скрытием карточек
 
-    // Функция для сброса игры
-    auto resetGame = [&]() // [&] — захват переменных по ссылке (все внешние переменные, используемые внутри лямбды, будут доступны для изменения) 
+    // Функция для сброса игры //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // [&] — захват переменных по ссылке (все внешние переменные, используемые внутри лямбды, будут доступны для изменения) 
+    auto resetGame = [&]() 
     {
         timeLeft = 20.0f;
         matchedPairs = 0;
