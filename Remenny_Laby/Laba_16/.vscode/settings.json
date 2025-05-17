@@ -1,6 +1,6 @@
 {
     "files.associations": {
-        "atomic": "cpp",
+        "atomic": "cpp", 
         "bit": "cpp",
         "cctype": "cpp",
         "charconv": "cpp",
