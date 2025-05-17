@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <random>
-
+ 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 700), "Memory Challenge", sf::Style::Titlebar | sf::Style::Close);
