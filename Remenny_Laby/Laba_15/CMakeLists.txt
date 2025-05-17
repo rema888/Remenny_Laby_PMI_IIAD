@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15) # Проверка версии CMake
-
+ 
 
 
 set(PROJECT_NAME RemennyTest)        # Задать значение PROJECT_NAME
@@ -11,4 +11,4 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 # Сказать программе, что должен быть исполняемый файл
-add_executable("${PROJECT_NAME}" main15.cpp) 
+add_executable("${PROJECT_NAME}" main15.cpp)   

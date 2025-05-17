@@ -180,7 +180,7 @@ class MyVector
         }
 
         friend std::istream& operator>>(std::istream& in, MyVector& other);
-        friend std::ostream& operator<<(std::ostream& out, const MyVector& other);
+        friend std::ostream& operator<<(std::ostream& out, const MyVector& other); 
 };
 
 // Оператор вывода
