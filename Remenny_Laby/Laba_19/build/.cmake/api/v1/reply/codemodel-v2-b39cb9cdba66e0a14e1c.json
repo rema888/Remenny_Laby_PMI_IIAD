@@ -29,7 +29,7 @@
 					[
 						0
 					],
-					"name" : "RemennyTest",
+					"name" : "sfml_sample",
 					"targetIndexes" : 
 					[
 						0,
@@ -43,22 +43,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Debug-0f50c550b2b696f73328.json",
+					"jsonFile" : "target-ALL_BUILD-Debug-c29287a7759160f261ad.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "RemennyTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RemennyTest-Debug-f0732deb34c0ec62345b.json",
-					"name" : "RemennyTest",
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Debug-4130b183ad2e2c011dad.json",
+					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-Debug-c4c2fb0cf02e8a2d260c.json",
-					"name" : "ZERO_CHECK",
+					"id" : "sfml_sample::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sfml_sample-Debug-6844fab4eee81f9fd1bb.json",
+					"name" : "sfml_sample",
 					"projectIndex" : 0
 				}
 			]
@@ -91,7 +91,7 @@
 					[
 						0
 					],
-					"name" : "RemennyTest",
+					"name" : "sfml_sample",
 					"targetIndexes" : 
 					[
 						0,
@@ -105,22 +105,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-Release-0f50c550b2b696f73328.json",
+					"jsonFile" : "target-ALL_BUILD-Release-c29287a7759160f261ad.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "RemennyTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RemennyTest-Release-2c611112eba9233ef5d1.json",
-					"name" : "RemennyTest",
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-Release-4130b183ad2e2c011dad.json",
+					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-Release-c4c2fb0cf02e8a2d260c.json",
-					"name" : "ZERO_CHECK",
+					"id" : "sfml_sample::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sfml_sample-Release-7110a3bf0bf2f4e48864.json",
+					"name" : "sfml_sample",
 					"projectIndex" : 0
 				}
 			]
@@ -153,7 +153,7 @@
 					[
 						0
 					],
-					"name" : "RemennyTest",
+					"name" : "sfml_sample",
 					"targetIndexes" : 
 					[
 						0,
@@ -167,22 +167,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-MinSizeRel-0f50c550b2b696f73328.json",
+					"jsonFile" : "target-ALL_BUILD-MinSizeRel-c29287a7759160f261ad.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "RemennyTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RemennyTest-MinSizeRel-ccec088786849c879be7.json",
-					"name" : "RemennyTest",
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-4130b183ad2e2c011dad.json",
+					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-MinSizeRel-c4c2fb0cf02e8a2d260c.json",
-					"name" : "ZERO_CHECK",
+					"id" : "sfml_sample::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sfml_sample-MinSizeRel-7e238f0acf57406ed710.json",
+					"name" : "sfml_sample",
 					"projectIndex" : 0
 				}
 			]
@@ -215,7 +215,7 @@
 					[
 						0
 					],
-					"name" : "RemennyTest",
+					"name" : "sfml_sample",
 					"targetIndexes" : 
 					[
 						0,
@@ -229,22 +229,22 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-0f50c550b2b696f73328.json",
+					"jsonFile" : "target-ALL_BUILD-RelWithDebInfo-c29287a7759160f261ad.json",
 					"name" : "ALL_BUILD",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "RemennyTest::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-RemennyTest-RelWithDebInfo-9a92ffb4da04b44a1b6b.json",
-					"name" : "RemennyTest",
+					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-4130b183ad2e2c011dad.json",
+					"name" : "ZERO_CHECK",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ZERO_CHECK-RelWithDebInfo-c4c2fb0cf02e8a2d260c.json",
-					"name" : "ZERO_CHECK",
+					"id" : "sfml_sample::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sfml_sample-RelWithDebInfo-6c6768b4623969d185fe.json",
+					"name" : "sfml_sample",
 					"projectIndex" : 0
 				}
 			]
@@ -253,8 +253,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_15/build",
-		"source" : "C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_15"
+		"build" : "C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_19/build",
+		"source" : "C:/Git/Remenny_Laby_PMI_IIAD/Remenny_Laby/Laba_19"
 	},
 	"version" : 
 	{

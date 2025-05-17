@@ -1,6 +1,6 @@
 #include <func.hpp>
 #include <iostream>
-
+ 
 int sum_of_digits(int N) 
 {
     if (N == 0) 

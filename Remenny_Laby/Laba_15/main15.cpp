@@ -57,26 +57,6 @@ class MyVector
         }      
 
         // Методы
-        void push_back(int value)
-        {
-            if (m_size + 1 <= m_cap) // Если не заходим за пределы текущего capacity
-            {
-                m_arr[m_size] = value; // Добавляем новый элемент
-                m_size++; // Увеличиваем размер 
-                return;
-            }
-
-            // Если заходим за пределы текущего capacity
-            m_cap = m_cap * 2 + 1;
-            int* tmp = new int[m_cap]; // Новый временный массив
-            for (int i = 0; i < m_size; i++)
-                tmp[i] = m_arr[i]; // Копируем все элементы
-            tmp[m_size] = value; // Новый элемент = переданному значению value
-            delete[] m_arr; // удаляем старый массив
-            m_arr = tmp; // указатель перенаправляем на новый массив
-            m_size++; // Увеличиваем размер 
-        }
-
         void reserve(size_t cap) // Метод увеличивает capacity, сохранив все что есть в векторе 
         {
             if (m_size >= cap) // Capacity не может быть меньше size
@@ -87,6 +67,15 @@ class MyVector
                 tmp[i] = m_arr[i];
             delete[] m_arr;
             m_arr = tmp;
+        }
+        
+        void push_back(int value)
+        {
+            if (m_size + 1 > m_cap) 
+                reserve(m_cap * 2 + 1);
+            
+            m_arr[m_size] = value;
+            m_size++;
         }
 
         void resize(size_t size) // Метод изменяет size и заполняет новые ячейки нулями

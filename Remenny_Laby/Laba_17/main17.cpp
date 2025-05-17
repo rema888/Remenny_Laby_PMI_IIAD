@@ -192,8 +192,36 @@ class MyVector
         }
 };
 
+struct BitRef 
+{
+    MyVector<uint64_t>& bits; // Ссылка на вектор, хранящий биты
+    size_t m_bit_index; // Индекс бита
+ 
+    // При создании объекта BitRef передается ссылка на вектор и индекс бита
+    BitRef(MyVector<uint64_t>& vec, size_t bit_index)
+        : bits(vec), m_bit_index(bit_index) {}
 
-template<> // Явное указание специализации
+    // Работает как get_bit - Позволяет получать значение бита как логическое (true или false)
+    operator bool()  
+    {
+        return (bits[m_bit_index / 64] >> (m_bit_index % 64)) & 1ULL;
+    }
+    // В результате возвращается true, если бит равен 1, иначе — false
+
+    
+    // Работает как set - Позволяет установить значение бита по его индексу
+    BitRef& operator=(bool value) 
+    {
+        if (value)
+            bits[m_bit_index / 64] |= (1ULL << m_bit_index % 64);
+        else
+            bits[m_bit_index / 64] &= ~(1ULL << m_bit_index % 64);
+        
+        return *this;
+    }
+};
+
+template<>
 class MyVector<bool> // Специализация для bool
 {
     private:
@@ -228,7 +256,7 @@ class MyVector<bool> // Специализация для bool
                                                                  // После сдвига на 2 позиции влево: 0b000...100
                                                                  // Инверсия маски (побитовое НЕ): ~(0b000...100) = 0b...111011
                                                                  //   0b...010101  
-                                                                 // | 0b...000001
+                                                                 // | 0b...111011
                                                                  //   --------------
                                                                  //   0b...010001  
         } 
@@ -300,13 +328,16 @@ class MyVector<bool> // Специализация для bool
             m_size--;
         }
 
-        bool operator[](size_t index) 
+        BitRef operator[](size_t index) 
         {
             if (index >= m_size)
                 throw std::out_of_range("Выход за границы вектора");
-                
-            return get_bit(index);
+
+            return BitRef(bits, index);
         }
+        // Создает временный объект BitRef, передавая ему:
+        // bits - ссылку на внутренний вектор uint64_t (где хранятся биты)
+        // index - запрошенную позицию бита
 
         bool operator[](size_t index) const 
         {
@@ -315,11 +346,12 @@ class MyVector<bool> // Специализация для bool
                 
             return get_bit(index);
         }
+        
 
         size_t size()
         {
             return m_size;
-        }
+        }      
 };
 
 
@@ -332,6 +364,9 @@ int main()
     v.push_back_bool(false);
     v.push_back_bool(false);
     v.push_back_bool(true);
+
+    v[2] = true;
+    std::cout << v[2] << std::endl;
 
     // Операция	            Состояние bits[0]          	    Индексы битов	m_size
     // v.push_back(true)	0b000...0001	                Бит 0 = 1	    1

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <func.hpp>
-  
+   
 int main()
 {
     // Задание 1

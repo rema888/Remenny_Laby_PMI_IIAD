@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 700), "Memory Challenge", sf::Style::Titlebar | sf::Style::Close); /////////////////////////////////////////////////////////////
+    sf::RenderWindow window(sf::VideoMode(800, 700), "Memory Challenge", sf::Style::Titlebar | sf::Style::Close);
     // Черный полупрозрачный прямоугольник длдя затемнения фона по окончании игры
     sf::RectangleShape overlay(sf::Vector2f(800, 700)); 
     overlay.setFillColor(sf::Color(0, 0, 0, 180));
@@ -74,7 +74,7 @@ int main()
         pairs.push_back(cardColors[i]);
     }
     
-    // Перемешиваем карточки //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Перемешиваем карточки 
     std::random_device rd; // Генератор случайных чисел
     std::shuffle(pairs.begin(), pairs.end(), rd); // rd нужен, чтобы обеспечить равномерное распределение (каждый элемент может попасть на любую позицию).
 
@@ -84,7 +84,7 @@ int main()
     std::vector<bool> cardRevealed(CARD_COUNT, false); // Отслеживает, какие карточки в данный момент открыты 
     std::vector<bool> cardMatched(CARD_COUNT, false); // Отслеживает, какие карточки уже были сопоставлены
 
-    // Настраивааем карточки
+    // Настраиваем карточки
     for (int i = 0; i < CARD_COUNT; i++) 
     {
         sf::RectangleShape card(sf::Vector2f(CARD_WIDTH, CARD_HEIGHT));
@@ -104,7 +104,7 @@ int main()
     bool waitingForFlipBack = false; // Задержка перед скрытием карточек (true, если игрок открыл две карточки, но они не совпали)
     float flipBackTime = 0.f; // Таймер для задержки перед скрытием карточек
 
-    // Функция для сброса игры //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Функция для сброса игры 
     // [&] — захват переменных по ссылке (все внешние переменные, используемые внутри лямбды, будут доступны для изменения) 
     auto resetGame = [&]() 
     {
@@ -156,7 +156,7 @@ int main()
                  // Обработка кликов по карточкам (только если игра активна)
                 if (!waitingForFlipBack && event.mouseButton.button == sf::Mouse::Left) // Если не ждем переворота карточек и нажата левая кнопка мыши
                 {
-                    for (int i = 0; i < CARD_COUNT; ++i) // Перебираем все карточки
+                    for (int i = 0; i < CARD_COUNT; i++) // Перебираем все карточки
                     {
                         if (!cardMatched[i] && cards[i].getGlobalBounds().contains(mousePos.x, mousePos.y)) // Карточка ещё не угадана и курсор находится над карточкой
                         {
@@ -182,7 +182,7 @@ int main()
                                         firstRevealed = -1; // Сбрасываем индексы найденных карточек
                                         secondRevealed = -1;
 
-                                        if (matchedPairs == PAIRS_COUNT) // Если количество полученных пар ровно количеству всех возможных пар (8)
+                                        if (matchedPairs == PAIRS_COUNT) // Если количество полученных пар равно количеству всех возможных пар (8)
                                             gameWon = true;
                                     }
                                     else // Если карточки не совпали

@@ -13,4 +13,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 include_directories("./func")
 
 # Сказать программе, что должен быть исполняемый файл
-add_executable("${PROJECT_NAME}" main.cpp func/func.cpp)
+add_executable("${PROJECT_NAME}" main.cpp func/func.cpp) 
